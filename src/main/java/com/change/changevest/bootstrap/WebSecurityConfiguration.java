@@ -49,6 +49,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/user/registrationConfirm",
                         "/badUser.html", "/registrationConfirmSuccess.html")
                 .permitAll()
+                .antMatchers("/me").authenticated()
                 .anyRequest()
                 .authenticated();
     }

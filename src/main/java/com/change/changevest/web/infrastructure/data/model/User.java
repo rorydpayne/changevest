@@ -14,24 +14,24 @@ public class User {
 
     @Id
     @GeneratedValue
-    protected Long id;
+    private Long id;
 
     @NotEmpty
-    protected String firstName;
+    private String firstName;
     @NotEmpty
-    protected String lastName;
+    private String lastName;
     @NotEmpty
     @Column(unique = true, nullable = false)
-    protected String email;
+    private String email;
     @NotEmpty
-    protected String password;
+    private String password;
     @Type(type = "org.hibernate.type.NumericBooleanType")
-    protected Boolean enabled;
+    private Boolean enabled;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    protected Set<Role> roles = new HashSet<Role>();
+    private Set<Role> roles = new HashSet<Role>();
 
     public User() {
     }
