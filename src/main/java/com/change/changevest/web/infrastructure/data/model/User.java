@@ -5,13 +5,14 @@ import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class User {
-
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Long id;
@@ -27,6 +28,8 @@ public class User {
     private String password;
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean enabled;
+    @OneToOne(cascade = CascadeType.ALL)
+    private AccountSettings accountSettings;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
@@ -90,5 +93,13 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public AccountSettings getAccountSettings() {
+        return accountSettings;
+    }
+
+    public void setAccountSettings(AccountSettings accountSettings) {
+        this.accountSettings = accountSettings;
     }
 }

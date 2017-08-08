@@ -10,6 +10,9 @@ public class UserMapper {
     @Autowired
     private RoleMapper roleMapper;
 
+    @Autowired
+    private AccountSettingsMapper accountSettingsMapper;
+
     public User fromDb(com.change.changevest.web.infrastructure.data.model.User dbUser) {
         if (dbUser == null)
             return null;
@@ -21,6 +24,7 @@ public class UserMapper {
         user.setEnabled(dbUser.isEnabled());
         user.setPassword(dbUser.getPassword());
         user.setRoles(roleMapper.fromDb(dbUser.getRoles()));
+        user.setAccountSettings(accountSettingsMapper.fromDb(dbUser.getAccountSettings()));
         return user;
     }
 
@@ -37,6 +41,7 @@ public class UserMapper {
         dbUser.setPassword(user.getPassword());
         dbUser.setEnabled(user.isEnabled());
         dbUser.setRoles(roleMapper.fromDomain(user.getRoles()));
+        dbUser.setAccountSettings(accountSettingsMapper.fromDomain(user.getAccountSettings()));
         return dbUser;
     }
 }

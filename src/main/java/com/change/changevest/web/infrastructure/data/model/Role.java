@@ -20,9 +20,9 @@ public class Role implements GrantedAuthority {
     @NotEmpty
     private String name;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
-    private Set<User> users = new HashSet<User>();
+//    @JsonIgnore
+//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+//    private Set<User> users = new HashSet<User>();
 
     public Role() {
     }
@@ -52,11 +52,11 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
+//    public Set<User> getUsers() {
+//        return users;
+//    }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
+//    public void setUsers(Set<User> users) {
+//        this.users = users;
+//    }
 }

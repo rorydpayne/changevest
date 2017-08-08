@@ -1,12 +1,15 @@
 package com.change.changevest.bootstrap;
 
-import com.change.changevest.web.infrastructure.data.model.User;
+import com.change.changevest.web.domain.model.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class UserRepositoryUserDetails extends User implements UserDetails {
+    private static final long serialVersionUID = 5533870534712828810L;
     UserRepositoryUserDetails(User user) {
         setId(user.getId());
         setFirstName(user.getFirstName());
@@ -19,7 +22,8 @@ public class UserRepositoryUserDetails extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
+        return getRoles().stream().map(role ->
+                (GrantedAuthority) role::getName).collect(Collectors.toList());
     }
 
     @Override
@@ -51,4 +55,6 @@ public class UserRepositoryUserDetails extends User implements UserDetails {
     public boolean isEnabled() {
         return super.isEnabled();
     }
+
+
 }

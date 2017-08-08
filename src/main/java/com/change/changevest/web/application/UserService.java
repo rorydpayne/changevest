@@ -1,9 +1,6 @@
 package com.change.changevest.web.application;
 
-import com.change.changevest.web.domain.model.OnRegistrationCompleteEvent;
-import com.change.changevest.web.domain.model.Role;
-import com.change.changevest.web.domain.model.User;
-import com.change.changevest.web.domain.model.VerificationToken;
+import com.change.changevest.web.domain.model.*;
 import com.change.changevest.web.domain.model.exception.EmailAlreadyRegisteredException;
 import com.change.changevest.web.domain.model.exception.VerificationTokenExpiredException;
 import com.change.changevest.web.domain.model.exception.VerificationTokenInvalidException;

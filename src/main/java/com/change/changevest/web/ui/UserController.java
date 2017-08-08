@@ -25,8 +25,7 @@ public class UserController {
     private MessageSource messages;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public @ResponseBody
-    User registerUserAccount(@RequestBody UserDTO signupReq,
+    public @ResponseBody User registerUserAccount(@RequestBody UserDTO signupReq,
                              BindingResult result, WebRequest req, Errors errors) {
 
             return userService.createUserAccount(signupReq, req.getLocale(), req.getContextPath());
